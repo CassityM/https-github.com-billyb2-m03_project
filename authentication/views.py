@@ -68,12 +68,3 @@ def login_page(request):
 
         else:
             return render(request, "invalid_login.html", {"form": form})
-
-
-def view_item(request, item_id):
-    if request.method == "GET":
-        return HttpResponse("Viewing item %s" % item_id)
-
-    else:
-        data = request.POST["hi"]
-        return HttpResponse("Hi? %s" % data)
