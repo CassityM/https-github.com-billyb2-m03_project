@@ -17,7 +17,8 @@ class Item(models.Model):
             "description": self.description,
 
         }
-        return json.dumps(json_obj)
+
+        return json_obj
 
     def __str__(self):
         return self.name
