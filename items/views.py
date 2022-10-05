@@ -8,7 +8,7 @@ def view_item(request, item_id):
     item = Item.objects.filter(item_id=item_id)
 
     if item.exists():
-        return HttpResponse(item.first().json())
+        return HttpResponse(json.dumps(item.first().json()))
 
     else:
         return HttpResponse("{}")
@@ -33,6 +33,9 @@ def search(request):
 
         if price is None:
             return HttpResponse("Price required when using price_search_type")
+
+        if price < 0.0:
+            return HttpResponse("Price must be positive")
 
         price = Decimal(price)
 
