@@ -5,14 +5,22 @@
     </head>
     <body>
         <h1>Hello, world!</h1>
-		<p id="item" ></p>
+		<div id="item" ></div>
 
 
 
         <script>
-            xhttp = new XMLHttpRequest();    
+            let xhttp = new XMLHttpRequest();    
             xhttp.onload = function() {
-				document.getElementById("item").innerHTML=this.responseText;
+                item_objects = JSON.parse(this.responseText);
+
+                let item_text = document.getElementById("item");
+				for(let i =0; i < item_objects.length; i++) {
+					item_text.innerHTML += "<h2>" + item_objects[i].name  + "</h2>" + "  "  +  "<h2>" + item_objects[i].price +"</h2>";
+
+                    item_text.innerHTML += "<br>"
+
+				}
         
 
             }
