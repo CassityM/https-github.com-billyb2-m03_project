@@ -34,10 +34,11 @@ def search(request):
         if price is None:
             return HttpResponse("Price required when using price_search_type")
 
-        if price < 0.0:
-            return HttpResponse("Price must be positive")
 
         price = Decimal(price)
+
+        if price < 0.0:
+            return HttpResponse("Price must be positive")
 
         if price_search_type == "lower_than":
             items = filter(lambda item: item.price <= price, items)
