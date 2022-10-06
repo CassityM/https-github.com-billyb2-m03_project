@@ -1,11 +1,27 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Cool site</title>
-	</head>
-	<body>
-		<h1>Hello, world!</h1>
+    <head>
+        <title>Cool site</title>
+    </head>
+    <body>
+        <h1>Hello, world!</h1>
+		<p id="item" ></p>
 
-	</body>
+
+
+        <script>
+            xhttp = new XMLHttpRequest();    
+            xhttp.onload = function() {
+				document.getElementById("item").innerHTML=this.responseText;
+        
+
+            }
+             xhttp.open("GET", "/items/search?name=Test&price=10&price_search_type=lower_than", false);
+
+             xhttp.send();
+
+        </script>
+
+    </body>
 
 </html>
